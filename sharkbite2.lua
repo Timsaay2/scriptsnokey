@@ -88,6 +88,15 @@ local function ETKUX_fake_script() -- Activate.LocalScript
 				wait(1)
 				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
 			end)
+		while toggle == true do 
+			wait(60)
+		local args = {
+		    [1] = "dizzy: NmnRbRwtDD for free vip servers and the best sharkbite autofarm script",
+		    [2] = "All"
+				}
+
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
 		end
 		if toggle == false then 
 			print("Toggle turned off")

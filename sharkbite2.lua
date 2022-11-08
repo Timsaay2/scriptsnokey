@@ -78,10 +78,10 @@ local function ETKUX_fake_script() -- Activate.LocalScript
 		while toggle == true do
 			wait(5)
 			print("Toggle turned on")
+			game.Players.LocalPlayer.Character.Humanoid.Sit = false 	
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["island5(Small)"].Model.MeshPart.CFrame
 			game:GetService("Players").LocalPlayer.PlayerGui.AFK.Enabled = false
 			game:GetService("ReplicatedStorage").EventsFolder.GameLoop:ClearAllChildren()
-			game.Players.LocalPlayer.Character.Humanoid.Sit = false 	
 			local vu = game:GetService("VirtualUser")
 			game:GetService("Players").LocalPlayer.Idled:connect(function()
 				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)

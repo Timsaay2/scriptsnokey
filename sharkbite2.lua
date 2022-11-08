@@ -76,7 +76,7 @@ local function ETKUX_fake_script() -- Activate.LocalScript
 			toggle = true
 		end
 		while toggle == true do
-			wait(5)
+			wait(1)
 			print("Toggle turned on")
 			game.Players.LocalPlayer.Character.Humanoid.Sit = false 	
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["island5(Small)"].Model.MeshPart.CFrame

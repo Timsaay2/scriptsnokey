@@ -11,7 +11,8 @@ local w = library:CreateWindow("PapaHub") -- Creates the window
 
 local b = w:CreateFolder("AutoFarm") -- Creates the folder(U will put here your buttons,etc)
 local c = w:CreateFolder("ESP")
-local d = w:CreateFolder("Misc")
+local d = w:CreateFolder("Teleports")
+local e = w:CreateFolder("Misc")
 
 b:Toggle("AutoFarm",function(bool)
 	getgenv().autoFarm = bool
@@ -45,7 +46,15 @@ end)
 --	end
 --end)
 
-d:Toggle("AntiAFK",function(bool)
+d:Dropdown("Location Teleport",{"A","B","C"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+	print(mob)
+end)
+
+d:Dropdown("Player Teleport",{"A","B","C"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+	print(mob)
+end)
+
+e:Toggle("AntiAFK",function(bool)
 	getgenv().antiAFK = bool
 	print("Status: " , bool)
 	if bool then 
@@ -53,7 +62,7 @@ d:Toggle("AntiAFK",function(bool)
 	end
 end)
 
-d:Toggle("ChatSpammer",function(bool)
+e:Toggle("ChatSpammer",function(bool)
 	getgenv().chatSpammer = bool
 	print("Status: " , bool)
 	if bool then 
@@ -62,7 +71,7 @@ d:Toggle("ChatSpammer",function(bool)
 end)
 
 
-d:Button("Discord",function()
+e:Button("Discord",function()
 	setclipboard('discord.gg/882ukwB58k')
 end)
 

@@ -1,106 +1,178 @@
--- Gui to Lua
--- Version: 3.2
+--Made by : https://v3rmillion.net/member.php?action=profile&uid=507120
+--Go vouch release thread : https://v3rmillion.net/showthread.php?tid=1040650
+getgenv().autoFarm = false
+getgenv().autoSafeFarm = false 
+getgenv().antiAFK = false 
+getgenv().chatSpammer = false 
 
--- Instances:
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 
-local PapaHub = Instance.new("ScreenGui")
-local Main = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local Credits = Instance.new("TextLabel")
-local Activate = Instance.new("TextButton")
+local w = library:CreateWindow("PapaHub") -- Creates the window
 
---Properties:
+local b = w:CreateFolder("AutoFarm") -- Creates the folder(U will put here your buttons,etc)
+local c = w:CreateFolder("ESP")
+local d = w:CreateFolder("Misc")
 
-PapaHub.Name = "PapaHub"
-PapaHub.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-PapaHub.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+b:Toggle("AutoFarm",function(bool)
+	getgenv().autoFarm = bool
+	print("Status: " , bool)
+	if bool then 
+		doFarm()
+	end
+end)
 
-Main.Name = "Main"
-Main.Parent = PapaHub
-Main.Active = true
-Main.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-Main.BorderSizePixel = 0
-Main.Draggable = true
-Main.Position = UDim2.new(0.321207851, 0, 0.409807354, 0)
-Main.Size = UDim2.new(0, 295, 0, 116)
+b:Toggle("AutoSafeFarm",function(bool)
+	getgenv().autoSafeFarm = bool
+	print("Status: " , bool)
+	if bool then 
+		doSafeFarm()
+	end
+end)
 
-Title.Name = "Title"
-Title.Parent = Main
-Title.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-Title.BorderSizePixel = 0
-Title.Size = UDim2.new(0, 295, 0, 16)
-Title.Font = Enum.Font.GothamBold
-Title.Text = "PapaHub AutoFarm"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextScaled = true
-Title.TextSize = 12.000
-Title.TextWrapped = true
+--c:Toggle("Survivor ESP",function(bool)
+--	getgenv().autoSafeFarm = bool
+--	print("Status: " , bool)
+--	if bool then 
+--		doSafeFarm()
+--	end
+--end)
 
-Credits.Name = "Credits"
-Credits.Parent = Main
-Credits.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-Credits.BorderSizePixel = 0
-Credits.Position = UDim2.new(0, 0, 0.861901641, 0)
-Credits.Size = UDim2.new(0, 295, 0, 16)
-Credits.Font = Enum.Font.GothamBold
-Credits.Text = "discord.gg/882ukwB58k"
-Credits.TextColor3 = Color3.fromRGB(255, 255, 255)
-Credits.TextScaled = true
-Credits.TextSize = 12.000
-Credits.TextWrapped = true
+--c:Toggle("Shark ESP",function(bool)
+--	getgenv().autoSafeFarm = bool
+--	print("Status: " , bool)
+--	if bool then 
+--		doSafeFarm()
+--	end
+--end)
 
-Activate.Name = "Activate"
-Activate.Parent = Main
-Activate.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-Activate.BorderColor3 = Color3.fromRGB(27, 42, 53)
-Activate.BorderSizePixel = 0
-Activate.Position = UDim2.new(0.0330629945, 0, 0.243326917, 0)
-Activate.Size = UDim2.new(0, 274, 0, 59)
-Activate.Font = Enum.Font.GothamBold
-Activate.Text = "Toggle"
-Activate.TextColor3 = Color3.fromRGB(0, 255, 127)
-Activate.TextSize = 43.000
-Activate.TextStrokeColor3 = Color3.fromRGB(102, 255, 115)
+d:Toggle("AntiAFK",function(bool)
+	getgenv().antiAFK = bool
+	print("Status: " , bool)
+	if bool then 
+		doantiAFK()
+	end
+end)
 
--- Scripts:
+d:Toggle("ChatSpammer",function(bool)
+	getgenv().chatSpammer = bool
+	print("Status: " , bool)
+	if bool then 
+		chatSpammer()
+	end
+end)
 
-local function ETKUX_fake_script() -- Activate.LocalScript 
-	local script = Instance.new('LocalScript', Activate)
 
-	toggle = false
-	script.Parent.MouseButton1Down:connect(function()
-	
-		if toggle == true then 
-			toggle = false 
-		else
-			toggle = true
-		end
-		while toggle == true do
-			wait(1)
-			print("Toggle turned on")
+d:Button("Discord",function()
+	setclipboard('discord.gg/882ukwB58k')
+end)
+
+
+function doFarm()
+	spawn(function()
+		while getgenv().autoFarm == true do 
 			game.Players.LocalPlayer.Character.Humanoid.Sit = false 	
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["island5(Small)"].Model.MeshPart.CFrame
 			game:GetService("Players").LocalPlayer.PlayerGui.AFK.Enabled = false
 			game:GetService("ReplicatedStorage").EventsFolder.GameLoop:ClearAllChildren()
-			local vu = game:GetService("VirtualUser")
-			game:GetService("Players").LocalPlayer.Idled:connect(function()
-				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-				wait(1)
-				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
-			end)
-		while toggle == true do 
-			wait(60)
-		local args = {
-		    [1] = "dizzy: NmnRbRwtDD for free vip servers and the best sharkbite autofarm script",
-		    [2] = "All"
-				}
-
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
-
-		end
-		if toggle == false then 
-			print("Toggle turned off")
+			wait()
 		end
 	end)
 end
-coroutine.wrap(ETKUX_fake_script)()
+
+function doSafeFarm()
+	spawn(function()
+		while getgenv().autoSafeFarm == true do 
+			print("AutoSafeFarm is on")
+			wait()
+		end
+	end)
+end
+
+function antiAFK()
+	spawn(function()
+		while getgenv().antiAFK == true do 
+			local vu = game:GetService("VirtualUser")
+			game:GetService("Players").LocalPlayer.Idled:connect(function()
+				vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+				wait()
+			end)
+		end
+	end)
+end
+
+function chatSpammer()
+	spawn(function()
+		while getgenv().chatSpammer == true do 
+			local args = {
+				[1] = "dizzy: NmnRbRwtDD for free vip servers and the best sharkbite autofarm script",
+				[2] = "All"
+			}
+			game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args))
+
+			wait(10)
+		end
+	end)
+end
+
+
+--b:Label("Pretty Useless NGL",{
+--	TextSize = 25; -- Self Explaining
+--	TextColor = Color3.fromRGB(255,255,255); -- Self Explaining
+--	BgColor = Color3.fromRGB(69,69,69); -- Self Explaining
+
+--}) 
+
+--b:Button("Button",function()
+--	print("Elym Winning")
+--end)
+
+--b:Toggle("Toggle",function(bool)
+--	shared.toggle = bool
+--	print(shared.toggle)
+--end)
+
+--b:Slider("Slider",{
+--	min = 10; -- min value of the slider
+--	max = 50; -- max value of the slider
+--	precise = true; -- max 2 decimals
+--},function(value)
+--	print(value)
+--end)
+
+--b:Dropdown("Dropdown",{"A","B","C"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+--	print(mob)
+--end)
+
+--b:Bind("Bind",Enum.KeyCode.C,function() --Default bind
+--	print("Yes")
+--end)
+
+--b:ColorPicker("ColorPicker",Color3.fromRGB(255,0,0),function(color) --Default color
+--	print(color)
+--end)
+
+--b:Box("Box","number",function(value) -- "number" or "string"
+--	print(value)
+--end)
+
+--b:DestroyGui()
+
+--[[
+How to refresh a dropdown:
+1)Create the dropdown and save it in a variable
+local yourvariable = b:Dropdown("Hi",yourtable,function(a)
+    print(a)
+end)
+2)Refresh it using the function
+yourvariable:Refresh(yourtable)
+How to refresh a label:
+1)Create your label and save it in a variable
+local yourvariable = b:Label("Pretty Useless NGL",{
+    TextSize = 25; -- Self Explaining
+    TextColor = Color3.fromRGB(255,255,255);
+    BgColor = Color3.fromRGB(69,69,69);
+})
+2)Refresh it using the function
+yourvariable:Refresh("Hello") It will only change the text ofc
+]]

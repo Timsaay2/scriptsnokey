@@ -30,7 +30,11 @@ function autoFarm()
 			local args = {
 				[1] = answer.Value
 			}
-			
+				game:GetService("ReplicatedStorage").SubmittedAnswer:FireServer(unpack(args))
+			wait()
+		end 
+	end)
+end
 function antiAFK()
 	spawn(function()
 		while getgenv().antiAFK == true do 
@@ -44,9 +48,5 @@ function antiAFK()
 	end)
 end
 
-			game:GetService("ReplicatedStorage").SubmittedAnswer:FireServer(unpack(args))
-			wait()
-		end 
-	end)
-end
+	
 

@@ -58,7 +58,7 @@ e:Toggle("AntiAFK",function(bool)
 	getgenv().antiAFK = bool
 	print("Status: " , bool)
 	if bool then 
-		doantiAFK()
+		doaAtiAFK()
 	end
 end)
 
@@ -97,7 +97,7 @@ function doSafeFarm()
 	end)
 end
 
-function antiAFK()
+function doAntiAFK()
 	spawn(function()
 		while getgenv().antiAFK == true do 
 			local vu = game:GetService("VirtualUser")

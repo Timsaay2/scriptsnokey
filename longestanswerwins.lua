@@ -47,6 +47,5 @@ function antiAFK()
 		end
 	end)
 end
-
 	
 

@@ -31,7 +31,7 @@ function autoFarm()
 				[1] = answer.Value
 			}
 				game:GetService("ReplicatedStorage").SubmittedAnswer:FireServer(unpack(args))
-			wait()
+	wait(5)
 		end 
 	end)
 end

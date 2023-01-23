@@ -1,2 +1,4 @@
-wait (15)
+while true do 
 game:GetService("CoreGui").ÈšÊÙ Ê¤ÙžÔ®Ô¤ÍŸ["#main_frame"]["#page-region"]["#menuFrame"].Visible = false 
+wait(5)
+end

@@ -8,6 +8,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord
 while true do 
     wait (5)
 loadstring(game:HttpGet("https://pastebin.com/raw/9hGa82eS", true))()
-game:GetService("Workspace").Timsaay.HumanoidRootPart.CFrame = game:GetService("Workspace").Tycoons.Red1.Important.Door.CFrame
+game:GetService("Workspace").Tycoons.Red1.Important.Door.CFrame = game:GetService("Workspace").Timsaay.HumanoidRootPart.CFrame
 
 end 

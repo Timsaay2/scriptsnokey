@@ -16,6 +16,6 @@ end
 while true do 
     wait (5)
 loadstring(game:HttpGet("https://pastebin.com/raw/9hGa82eS", true))()
-game:GetService("Workspace").Tycoons.Red1.Important.Door.CFrame = game:GetService("Workspace").Timsaay.HumanoidRootPart.CFrame
+game:GetService("Workspace").Tycoons.Red1.Important.Door.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame
 
 end 

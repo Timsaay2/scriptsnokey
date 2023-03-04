@@ -9,7 +9,9 @@ local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloo
 local w = library:CreateWindow("PapaHub") -- Creates the window
 
 local b = w:CreateFolder("Auto Farm") -- Creates the folder(U will put here your buttons,etc)
-local c = w:CreateFolder("Misc")
+local c = w:CreateFolder("Pets")
+local d = w:CreateFolder("Tools")
+local e = w:CreateFolder("Misc")
 
 b:Label("Do NOT use both Farms at the same time!!!",{
 	TextSize = 16; -- Self Explaining
@@ -35,8 +37,21 @@ b:Toggle("SurvivalFarm",function(bool)
 end)
 
 
+local selectedPet;
 
-c:Toggle("AntiAFK",function(bool)
+c:Dropdown("Pets",{"BCat","Cat","Dog","Dom","Evil","Flame","Fox","Golden Flame","Gumdrop","Ice Cube","Magic","Narwhal","Penguin","Pig","Slime"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+	selectedPet = mob;
+	print(mob)
+end)
+
+c:Button("Get Pet!",function()
+	if selectedPet then 
+		getPet()
+	end
+end)
+
+
+e:Toggle("AntiAFK",function(bool)
 	getgenv().antiAFK = bool
 	print("Status: " , bool)
 	if bool then 
@@ -44,7 +59,7 @@ c:Toggle("AntiAFK",function(bool)
 	end
 end)
 
-c:Toggle("ChatSpammer",function(bool)
+e:Toggle("ChatSpammer",function(bool)
 	getgenv().chatSpammer = bool
 	print("Status: " , bool)
 	if bool then 
@@ -53,7 +68,7 @@ c:Toggle("ChatSpammer",function(bool)
 end)
 
 
-c:Button("Discord",function()
+e:Button("Discord",function()
 	setclipboard('discord.gg/882ukwB58k')
 end)
 
@@ -107,3 +122,11 @@ function chatSpammer()
 	end)
 end
 
+function getPet()
+	local args = {
+		[1] = selectedPet;
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PetEvent"):FireServer(unpack(args))
+
+end

@@ -50,6 +50,20 @@ c:Button("Get Pet!",function()
 	end
 end)
 
+local selectedTool; 
+
+d:Dropdown("Tools",{"Banana Peel", "Bang Gun"},true,function(mob) --true/false, replaces the current title "Dropdown" with the option that t
+	selectedTool = mob;
+	print(mob)
+end)
+
+
+
+d:Button("Get Tool!",function()
+	if selectedTool then 
+		getTool()
+	end
+end)
 
 e:Toggle("AntiAFK",function(bool)
 	getgenv().antiAFK = bool
@@ -129,4 +143,9 @@ function getPet()
 
 	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("PetEvent"):FireServer(unpack(args))
 
+end
+
+function getTool()
+	game:GetService("ReplicatedStorage").GearShop.Gears.selectedTool.Parent = game:GetService("Players").Timsaay.Backpack
+	
 end

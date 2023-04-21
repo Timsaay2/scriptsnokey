@@ -63,7 +63,7 @@ function autoFarm()
 				[1] = "Game"
 			}
 			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Events"):WaitForChild("Game"):FireServer(unpack(args))
-			wait()
+			wait(0.5)
 		end
 	end)
 end

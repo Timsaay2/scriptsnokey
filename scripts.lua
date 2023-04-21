@@ -6,7 +6,8 @@ games = {
 	[537413528] = 'https://raw.githubusercontent.com/1201for/littlegui/main/Build-A-Boat'; -- buildaboat
 	[6772424226] = 'https://raw.githubusercontent.com/Timsaay2/scriptsnokey/main/2playermillionairetycoon.lua'; -- 2 player millionaire tycoon
 	[815405518] = 'https://raw.githubusercontent.com/Timsaay2/scriptsnokey/main/thefloorislava'; -- the floor is lava
-}
+	[11605808253] = 'https://raw.githubusercontent.com/Timsaay2/scriptsnokey/main/climbrace.lua'; -- climb race
+}	
 
 
 if games[game.PlaceId] then

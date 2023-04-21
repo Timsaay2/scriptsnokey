@@ -26,16 +26,16 @@ b:Toggle("AutoRebirth",function(bool)
 	end
 end)
 
-local selectedPet;
+local selectedEgg;
 
-c:Dropdown("Pets",{"Coming Soon!"},true,function(mob)
-	selectedPet = mob;
-	print(mob)
+c:Dropdown("Eggs",{"1","2","3","4"},true,function(mob)
+	selectedEgg = mob;
+	print("Selected egg is "..mob)
 end)
 
-c:Button("Get Pet!",function()
-	if selectedPet then 
-		getPet()
+c:Button("Buy!",function()
+	if selectedEgg then 
+		getEgg()
 	end
 end)
 
@@ -85,4 +85,20 @@ function doAntiAFK()
 			end)
 		end
 	end)
+end
+
+
+
+function getEgg()
+	local args = {
+		[1] = "Hatch",
+		[2] = {
+			[1] = 1,
+			[2] = selectedEgg
+		}
+	}
+
+	game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Functions"):WaitForChild("hatchEgg"):InvokeServer(unpack(args))
+
+
 end

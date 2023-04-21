@@ -2,6 +2,7 @@ getgenv().autoFarm = false
 getgenv().autoRebirth = false 
 getgenv().antiAFK = false 
 getgenv().chatSpammer = false
+getgenv().autoEquip = false
 
 local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
 
@@ -39,6 +40,14 @@ c:Button("Buy!",function()
 	end
 end)
 
+c:Toggle("AutoEquipPets",function(bool)
+	getgenv().autoEquip = bool
+	print("Status: ", bool)
+	if bool then 
+		autoEquip()
+	end
+end)
+
 d:Toggle("AntiAFK",function(bool)
 	getgenv().antiAFK = bool
 	print("Status: ", bool)
@@ -67,6 +76,18 @@ function autoRebirth()
 			}
 			game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Events"):WaitForChild("Rebirth"):FireServer(unpack(args))
 			wait(10)
+		end
+	end)
+end
+
+function autoEquip()
+	spawn(function()
+		while getgenv().autoEquip == true do 
+			local petFolder = game:GetService("ReplicatedStorage").Data.Players.Timsaay.Pets
+			for _, petLevelFolder in ipairs(petFolder:GetChildren()) do
+				petLevelFolder:WaitForChild("Equipped").Value = true
+			end
+			wait(30)
 		end
 	end)
 end

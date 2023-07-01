@@ -1,4 +1,4 @@
-local keys = {
+keys = {
     ['Monday']    = 'RstUvwxYZ#$',
     ['Tuesday']   = 'Qa%%2xPd9W7hK',
     ['Wednesday'] = 'jU6c$Ym3F1qV',
